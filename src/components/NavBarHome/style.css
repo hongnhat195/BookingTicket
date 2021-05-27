@@ -1,0 +1,69 @@
+.header-section {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.102);
+  padding: 15px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  height: 90px;
+}
+.header-active {
+  background: #0a1e5e;
+  border: none;
+  -webkit-animation-duration: 1s;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.102);
+  padding: 21px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  height: 90px;
+}
+.navlink {
+  position: relative;
+  color: #e9eeff;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 5px;
+  margin: 0 20px;
+}
+.navlink:hover {
+  text-decoration: none;
+  color: #fff;
+}
+.navlink::before {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 0.15rem;
+  background-image: linear-gradient(to right, #fbbd61, #ec7532);
+  box-shadow: 0 0 20px 0 #fbbd61;
+  position: absolute;
+  left: 0;
+  bottom: -20px;
+  transition: all 0.3s;
+}
+.navlink:hover::before {
+  width: 100%;
+}
+.nav1 {
+  background-image: -webkit-linear-gradient(
+    169deg,
+    #5560ff 17%,
+    #aa52a1 63%,
+    #ff4343 100%
+  );
+  padding: 10px 49px;
+  font-weight: 600;
+  border-radius: 25px;
+  display: inline-block;
+}
+.nav1:hover::before {
+  width: 0;
+}
+.nav1:hover {
+  box-shadow: 0px 10px 15px 0px rgb(59 55 188 / 50%);
+}

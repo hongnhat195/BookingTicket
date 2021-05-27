@@ -1,0 +1,32 @@
+.navbar-inverse {
+  background-color: #222;
+  max-height: 80px;
+}
+
+.navbar-inverse .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navbar-inverse .container .collapse1 {
+  float: right;
+}
+
+.navbar-inverse .container .collapse1 li a {
+  color: #bbb;
+}
+
+.navbar-inverse .container .collapse1 li a:hover {
+  color: #ffff;
+}
+/*# sourceMappingURL=style.css.map */

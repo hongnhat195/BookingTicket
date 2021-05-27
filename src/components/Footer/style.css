@@ -1,0 +1,56 @@
+.footer {
+  /* background: url("../img/footer-bg.png") no-repeat bottom center / cover; */
+  position: relative;
+  background: #13151f;
+  padding: 60px 0 30px;
+  margin-top: -30px;
+  color: #fff;
+}
+.footer .linkto .row {
+  margin-bottom: -120px !important;
+  justify-content: center;
+  align-items: initial;
+}
+
+.footer .container a {
+  text-decoration: none;
+  color: #fff;
+}
+.widget h4,
+.widget img {
+  margin-bottom: 40px;
+}
+
+.widget ul li {
+  margin-top: 15px;
+}
+
+.widget h6 {
+  margin-top: 18px;
+}
+
+.widget {
+  margin-bottom: 40px;
+}
+
+.widget button {
+  background: transparent;
+  color: #eb315a;
+  border: none;
+  padding: 0;
+}
+
+.widget form {
+  margin-top: 25px;
+}
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(245, 241, 241, 0.993);
+}
+.copyright {
+}
+/*----------------------------------
+--------- footer AREA CSS END --------
+-----------------------------------*/

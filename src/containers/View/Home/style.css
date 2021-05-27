@@ -1,0 +1,28 @@
+.home {
+  background-image: url("../../../img/banner01.jpg");
+  /* filter: brightness(0.7); */
+  filter: saturate(150%);
+  height: 100%;
+  position: relative;
+}
+
+.tittle {
+  margin-top: 0;
+  font-size: 100px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  font-weight: 800;
+  color: white;
+  text-align: center;
+  opacity: 1;
+}
+/* .listmovie {
+  background-color: #001232;
+} */
+.tittle p {
+  font-size: 28px;
+  line-height: 1.4;
+  margin-top: 40px;
+  color: rgb(211, 190, 190);
+}

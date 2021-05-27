@@ -1,0 +1,88 @@
+.search-ticket {
+  background-image: url("../../img/ticket-bg01.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 295px;
+  width: 100%;
+  position: absolute;
+  top: 800px;
+  left: 200px;
+}
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
+
+* {
+  font-family: Roboto, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.flexbox {
+  /* background: linear-gradient(155deg, #55c7ed, #2bb3e0, #3bc1ed); */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search {
+  margin: 20px;
+}
+
+.search > h3 {
+  font-weight: normal;
+}
+
+.search > h1,
+.search > h3 {
+  color: #314ede;
+  margin-bottom: 15px;
+  text-shadow: 0 1px #0091c2;
+}
+
+.search > div {
+  display: inline-block;
+  position: relative;
+  filter: drop-shadow(0 1px #0091c2);
+}
+
+.search > div:after {
+  content: "";
+  background: #2ed2ec;
+  width: 4px;
+  height: 20px;
+  position: absolute;
+  top: 60px;
+  right: -3px;
+  transform: rotate(135deg);
+}
+
+.search > div > input {
+  color: white;
+  font-size: 16px;
+  background: transparent;
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  border: solid 3px #2ed2ec;
+  outline: none;
+  border-radius: 35px;
+  transition: width 0.5s;
+  margin-top: 20px;
+}
+
+.search > div > input::placeholder {
+  color: #efefef;
+  opacity: 0;
+  transition: opacity 150ms ease-out;
+}
+
+.search > div > input:focus::placeholder {
+  opacity: 1;
+}
+
+.search > div > input:focus,
+.search > div > input:not(:placeholder-shown) {
+  width: 300px;
+}

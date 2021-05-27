@@ -1,0 +1,15 @@
+.dashboard {
+  margin-top: 0px;
+  background-color: #fff;
+}
+
+.dashboard .container {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.dashboard .input-group {
+  width: 60%;
+  margin: auto;
+}
+/*# sourceMappingURL=style.css.map */

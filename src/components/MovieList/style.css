@@ -1,0 +1,48 @@
+.section-title {
+  line-height: 24px;
+  font-size: 14px;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 3px solid rgb(253 253 253/ 10%);
+}
+.portfolio-menu {
+  padding-top: 30px;
+}
+
+.portfolio-menu li {
+  display: inline-block;
+  position: relative;
+  margin-left: 15px;
+  padding-bottom: 20px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.portfolio-menu li::before {
+  background: transparent;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  transition: 0.4s;
+  content: "";
+  height: 4px;
+  position: absolute;
+  z-index: 99;
+  /* color: #eb315a; */
+}
+
+.portfolio-menu li.active {
+  color: rgb(165, 42, 42);
+  font-size: 20px;
+}
+
+.portfolio-menu li.active::before,
+.portfolio-menu li:hover::before {
+  background: #eb315a;
+}

@@ -1,0 +1,21 @@
+.navbar-inverse {
+  background-color: #222;
+  max-height: 80px;
+  .container {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    .collapse1 {
+      float: right;
+      li {
+        a {
+          color: #bbb;
+          &:hover {
+            color: #ffff;
+          }
+        }
+      }
+    }
+  }
+}
