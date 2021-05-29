@@ -26,6 +26,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import ManageFilm from "../../../components/ManageFilm";
+import ManageUser from "../../../components/ManageUser";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
   return (
@@ -74,13 +76,13 @@ const useStyles1 = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
   },
 }));
+
 export default function DashBoard() {
   const Token = JSON.parse(localStorage.getItem("UserAdmin")).accessToken;
   const classes = useStyles();
-  const classes1 = useStyles1();
+
   const [value, setValue] = React.useState(0);
-  const [user, setUser] = useState([]);
-  const [query, setQuery] = useState("");
+
   const [addUser, setAddUser] = useState({
     taiKhoan: "",
     matKhau: "",
@@ -90,82 +92,10 @@ export default function DashBoard() {
     maLoaiNguoiDung: "",
     hoTen: "",
   });
-  const [maloai, setMaloai] = React.useState("");
-  const [open, setOpen] = React.useState(false);
-  const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-  const handleChange2 = (e) => {
-    const { name, value } = e.target;
-    setMaloai(e.target.value);
-    setAddUser({ ...addUser, [name]: value });
-  };
-  console.log("user", user);
-  const onSetUser = (e) => {
-    setUser(e);
-  };
-  const showUser = () => {
-    return user.map((item, index) => {
-      return (
-        <UserItem value={user} onSetUser={onSetUser} data={item} key={index} />
-      );
-    });
-  };
-  const fetUser = async () => {
-    const res = await axios
-      .get(
-        "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP02"
-      )
-      .then((res) => {
-        setUser(...user, res.data);
-      })
-      .catch((err) => console.error(err));
-  };
-
-  const handleAddUser = async () => {
-    return await axios
-      .post(
-        "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThemNguoiDung",
-        addUser,
-        {
-          headers: {
-            Authorization: `Bearer ${Token}`,
-          },
-        }
-      )
-      .then((res) => {
-        console.log("result", res.data);
-        fetUser();
-        alert("Thêm thành công");
-      })
-      .catch((err) => {
-        alert(err.response.data);
-      });
-  };
-  useEffect(() => {
-    const fetSearcher = async () => {
-      if (query != "") {
-        const res = await axios.get(
-          "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=GP02&tuKhoa=" +
-            query
-        );
-        setUser(res.data);
-      } else fetUser();
-
-      console.log(query);
-    };
-    fetSearcher();
-  }, [query]);
 
   return (
     <div className="dashboard">
@@ -190,146 +120,10 @@ export default function DashBoard() {
         </AppBar>
         <div className="container-fluid align-items-center ">
           <TabPanel value={value} index={0}>
-            <div className="input-group flex-nowrap mb-5 mt-5">
-              <span className="input-group-text" id="addon-wrapping">
-                Search
-              </span>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Username"
-                aria-label="Username"
-                aria-describedby="addon-wrapping"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-              />
-            </div>
-            <div>
-              <Button
-                variant="outlined"
-                color="primary"
-                className="mb-5 "
-                color="primary"
-                onClick={handleClickOpen}
-              >
-                Thêm người dùng
-              </Button>
-              <Dialog
-                open={open}
-                onClose={handleClose}
-                fullScreen={fullScreen}
-                aria-labelledby="form-dialog-title"
-              >
-                <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
-                <DialogContent>
-                  <DialogContentText>
-                    <p> Nhập thông tin người dùng. Mã nhóm mặc định là GP02 </p>
-                  </DialogContentText>
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    name="taiKhoan"
-                    label="Tài Khoản"
-                    type="text"
-                    defaultValue={addUser.taiKhoan}
-                    fullWidth
-                    onChange={handleChange2}
-                  />
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    name="matKhau"
-                    label="Mật khẩu"
-                    type="text"
-                    fullWidth
-                    defaultValue={addUser.matKhau}
-                    onChange={handleChange2}
-                  />
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    name="email"
-                    label="Email"
-                    type="text"
-                    fullWidth
-                    defaultValue={addUser.email}
-                    onChange={handleChange2}
-                  />
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    name="soDt"
-                    label="Số ĐT"
-                    type="text"
-                    fullWidth
-                    defaultValue={addUser.soDt}
-                    onChange={handleChange2}
-                  />
-                  <TextField
-                    disabled
-                    autoFocus
-                    margin="dense"
-                    name="maNhom"
-                    label="Mã nhóm"
-                    type="text"
-                    defaultValue={addUser.maNhom}
-                    fullWidth
-                    onChange={handleChange2}
-                  />
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    name="hoTen"
-                    label="Họ tên"
-                    type="text"
-                    fullWidth
-                    defaultValue={addUser.hoTen}
-                    onChange={handleChange2}
-                  />
-                  <FormControl className={classes1.formControl}>
-                    <InputLabel id="demo-simple-select-label">
-                      Loại người dùng
-                    </InputLabel>
-                    <Select
-                      labelId="demo-simple-select-label"
-                      id="demo-simple-select"
-                      value={maloai}
-                      name="maLoaiNguoiDung"
-                      onChange={handleChange2}
-                    >
-                      <MenuItem value={"khachHang"}>Khách hàng</MenuItem>
-                      <MenuItem value={"quanTri"}>Quản trị</MenuItem>
-                    </Select>
-                  </FormControl>
-                </DialogContent>
-                <DialogActions>
-                  <Button onClick={handleClose} color="primary">
-                    Cancel
-                  </Button>
-                  <Button onClick={handleAddUser} color="primary">
-                    Subscribe
-                  </Button>
-                </DialogActions>
-              </Dialog>
-            </div>
-
-            <table className="table align-items-center">
-              <thead>
-                <tr>
-                  <th scope="">Tài Khoản</th>
-                  <th scope="col">Mật Khẩu</th>
-                  <th scope="col">Họ Tên</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Số điện thoại</th>
-                  <th scope="col">Tùy chỉnh</th>
-                </tr>
-              </thead>
-              <tbody>{showUser()}</tbody>
-            </table>
-            {/* <ListUser value={user} onSetUser={onSetUser} /> */}
+            <ManageUser />
           </TabPanel>
           <TabPanel value={value} index={1}>
-            Quản lí Phim
+            <ManageFilm />
           </TabPanel>
         </div>
       </div>

@@ -28,10 +28,8 @@ export default function UserItem(props) {
     maLoaiNguoiDung: "KhachHang",
     hoTen: props.data.hoTen,
   });
-  const [value, setValue] = useState(false);
   const a = state.soDt == null ? state.soDT : state.soDt;
   const Token = JSON.parse(localStorage.getItem("UserAdmin")).accessToken;
-  const UpdateUser = (item) => {};
   const handleChange = (e) => {
     const { name, value } = e.target;
     setState1({ ...state1, [name]: value });
@@ -96,7 +94,7 @@ export default function UserItem(props) {
     );
     props.onSetUser(res.data);
   };
-  useEffect(() => {});
+
   if (state1 != null) {
     return (
       <tr>
