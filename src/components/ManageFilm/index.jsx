@@ -85,7 +85,7 @@ export default function ManageFilm(props) {
   const fetchMovieList = async () => {
     const result = await axios
       .get(
-        "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP10"
+        "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP02  "
       )
       .then((res) => {
         setMovieList({
@@ -180,7 +180,6 @@ export default function ManageFilm(props) {
               >
                 Xóa Phim
               </button>
-              <button onClick={() => handleUploadImage}></button>
             </th>
           </tr>
         );

@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
 export default function ListSeat(props) {
+  const [booking, setBooking] = useState(
+    props.data.daDat == false ? false : true
+  );
   const bookingTicket = () => {
     console.log("props1", props.value);
     const state = {
@@ -47,6 +50,7 @@ export default function ListSeat(props) {
             if (response.status != 200) {
               throw new Error("Something went wrong");
             }
+
             return response.data;
           })
           .catch((error) => {
@@ -65,7 +69,7 @@ export default function ListSeat(props) {
   return (
     <div className="col-12 m-2">
       <button
-        disabled={props.data.daDat == false ? false : true}
+        disabled={booking}
         className="btn btn-warning"
         onClick={bookingTicket}
       >

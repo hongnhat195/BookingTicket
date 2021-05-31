@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./style.css";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Logo from "../../img/logo.png";
 import { clearLogin } from "../../containers/View/SingIn/Api/actions";
 class NavBarHome extends Component {
@@ -46,21 +46,21 @@ class NavBarHome extends Component {
                 </a>
               </div>
               <div className="col-9">
-                <NavLink className="navlink " to="./">
+                <Link className="navlink " to="/">
                   Home
-                </NavLink>
-                <NavLink className="navlink " to="./SignIn">
+                </Link>
+                <Link className="navlink " to="/SignIn">
                   Sign In
-                </NavLink>
-                <NavLink className="navlink " to="./SignUp">
+                </Link>
+                <Link className="navlink " to="/SignUp">
                   Sign Up
-                </NavLink>
-                <NavLink className="navlink" to="./">
+                </Link>
+                <Link className="navlink" to="/">
                   About Us
-                </NavLink>
-                <NavLink className="navlink nav1 " to="./">
+                </Link>
+                <Link className="navlink nav1 " to="/">
                   Booking Ticket
-                </NavLink>
+                </Link>
               </div>
             </div>
           </div>
@@ -83,21 +83,21 @@ class NavBarHome extends Component {
                 </a>
               </div>
               <div className="col-9">
-                <NavLink className="navlink " to="./">
+                <Link className="navlink " to="./">
                   Home
-                </NavLink>
-                <NavLink className="navlink " to="./Personal">
+                </Link>
+                <Link className="navlink " to="./Personal">
                   My Account
-                </NavLink>
-                <NavLink className="navlink " to="./SignUp">
+                </Link>
+                <Link className="navlink " to="./SignUp">
                   Sign Up
-                </NavLink>
-                <NavLink className="navlink" to="./" onClick={this.clear}>
+                </Link>
+                <Link className="navlink" to="./" onClick={this.clear}>
                   Log Out
-                </NavLink>
-                <NavLink className="navlink nav1 " to="./">
+                </Link>
+                <Link className="navlink nav1 " to="./">
                   Booking Ticket
-                </NavLink>
+                </Link>
               </div>
             </div>
           </div>

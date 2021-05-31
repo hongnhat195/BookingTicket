@@ -4,13 +4,17 @@ import {
   fetchMovieDetail,
   fetGetTheaterCourse,
 } from "../../../Redux/Actions/course";
-import { NavLink, Link } from "react-router-dom";
+
 import "./style.css";
 import { fetchGetFilmShow } from "../BookingInformation/Api/actions";
+
+import BookingFilm from "../../../components/BookingFilm";
+
 class DetailFilm extends Component {
+  fetLichChieu = () => {};
   render() {
     const data = this.props.movieDetail.maPhim;
-    const a = `/BookingInformation/${data}`;
+    console.log("data", data);
     return (
       <div>
         <div className="detailFilm ">
@@ -82,12 +86,15 @@ class DetailFilm extends Component {
                     </div>
                   </div>
                 </div>
-                <Link
+
+                <BookingFilm value={data} />
+
+                {/* <Link
                   to={`/BookingInformation/${this.props.movieDetail.maPhim}`}
                   className="theme-btn btn-danger btn-lg"
                 >
                   <i className="fa fa-ticket-alt"></i> BUY TICKET
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>

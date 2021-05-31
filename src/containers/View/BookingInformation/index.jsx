@@ -97,29 +97,7 @@ class BookingInformation extends Component {
       });
     }
   };
-  test = async () => {
-    const login = {
-      maLichChieu: 16963,
-      danhSachVe: [
-        {
-          maGhe: 52523,
-          giaVe: 75000,
-        },
-      ],
-      taiKhoanNguoiDung: "1122",
-    };
-    const res = await axios.post(
-      "https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/DatVe",
-      login,
-      {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiMTEyMiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IktoYWNoSGFuZyIsIm5iZiI6MTYyMTc4NTM5NCwiZXhwIjoxNjIxNzg4OTk0fQ.yDw9mUlStANYn7Du_Tvr2k0TVwnD2n0p-VrIMayCYF0",
-        },
-      }
-    );
-    console.log("res", res);
-  };
+
   render() {
     console.log(
       this.props.infoTheaterCourse,
@@ -136,9 +114,7 @@ class BookingInformation extends Component {
         className="booking container "
       >
         <h1>Đặt vé</h1>
-        <button onClick={this.test} className="btn btn-dark">
-          Test
-        </button>
+
         <div className="row ">
           <div className="col-2">{this.showTheater()}</div>
           <div className="col-3">{this.showTheaterDetail()}</div>

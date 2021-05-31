@@ -44,7 +44,7 @@ function Personal() {
   });
 
   console.log("state", state);
-
+  console.log("Ticket", bookingTicket);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -92,7 +92,7 @@ function Personal() {
         maLoaiNguoiDung: "KhachHang",
         hoTen: user.hoTen,
       });
-      setBookingTicket(result.thongTinDatVe);
+      setBookingTicket(result.data.thongTinDatVe);
     }
     fetchUserInfo();
     console.log("user", user);
