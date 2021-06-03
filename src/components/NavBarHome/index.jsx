@@ -83,20 +83,20 @@ class NavBarHome extends Component {
                 </a>
               </div>
               <div className="col-9">
-                <Link className="navlink " to="./">
+                <Link className="navlink " to="/">
                   Home
                 </Link>
-                <Link className="navlink " to="./Personal">
+                <Link className="navlink " to="/Personal">
                   My Account
                 </Link>
-                <Link className="navlink " to="./SignUp">
+                <Link className="navlink " to="/SignUp">
                   Sign Up
                 </Link>
-                <Link className="navlink" to="./" onClick={this.clear}>
+                <Link className="navlink" to="/" onClick={this.clear}>
                   Log Out
                 </Link>
-                <Link className="navlink nav1 " to="./">
-                  Booking Ticket
+                <Link className="navlink nav1 " to="/">
+                  Hello {JSON.parse(localStorage.getItem("User")).taiKhoan}
                 </Link>
               </div>
             </div>

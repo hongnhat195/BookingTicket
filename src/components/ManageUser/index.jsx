@@ -12,6 +12,7 @@ export default function ManageUser() {
   const [open, setOpen] = React.useState(false);
   const [open1, setOpen1] = React.useState(false);
   const [userList, setUserList] = useState({ hits: [] });
+  const [query, setQuery] = useState("");
   const [updateUser, setUpdateUser] = useState({
     taiKhoan: "",
     matKhau: "",
@@ -170,9 +171,36 @@ export default function ManageUser() {
       });
     }
   };
+  useEffect(() => {
+    const fetFindUser = async () => {
+      const result = await axios
+        .get(
+          `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP02&tuKhoa=${query}`
+        )
+        .then((res) => {
+          setUserList({
+            hits: res.data,
+          });
+        });
+    };
+    if (query != "") fetFindUser();
+    else fetUserList();
+  }, [query]);
   return (
     <div>
       <h1 className="mt-5 mb-5">Danh sách người dùng</h1>
+      <div className="input-group">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Search username"
+          aria-label="Recipient's username with two button addons"
+          aria-describedby="button-addon4"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+      </div>
+
       <button onClick={handleClickOpen1} className="btn btn-success  mb-2">
         Thêm người dùng
       </button>

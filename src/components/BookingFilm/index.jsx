@@ -7,7 +7,6 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 export default function BookingFilm(props) {
-  console.log(props);
   const [open, setOpen] = React.useState(false);
   const [scroll, setScroll] = React.useState("paper");
   const [theaterList, setTheaterList] = useState({ hits: [] });
@@ -114,18 +113,21 @@ export default function BookingFilm(props) {
     const a = lichChieu.hits.filter(
       (item) => item.thongTinRap.maCumRap == lichChieu.maCumRap
     );
-    console.log("a", a);
-    return a.map((item) => {
+
+    const b = a.map((item) => {
       return (
         <button
           onClick={handleClickOpen("paper", item.maLichChieu)}
           className="m-2 btn btn-warning"
         >
           <p> {item.thongTinRap.tenRap} </p>
-          <p> {item.ngayChieuGioChieu} </p>
+          <p> {new Date(item.ngayChieuGioChieu).toLocaleString()} </p>
         </button>
       );
     });
+    console.log("b", b);
+    if (b.length == 0) return <p className="m-5"> Không có lịch chiếu</p>;
+    else return b;
   };
   const showListSeat = () => {
     if (listSeat.hits) {
@@ -163,7 +165,7 @@ export default function BookingFilm(props) {
       ],
       taiKhoanNguoiDung: JSON.parse(localStorage.getItem("User")).taiKhoan,
     };
-    console.log(a);
+
     const res = axios
       .post("https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/DatVe", a, {
         headers: {
@@ -207,9 +209,9 @@ export default function BookingFilm(props) {
         {theaterDetail.hits != [] ? <h6>Danh sách cụm rạp</h6> : null}
         {showTheaterDetail()}
       </div>
-      <div>
+      <div className="m-2">
         <h6>Mã cụm rạp</h6>
-        {showLichChieu()}{" "}
+        {showLichChieu()}
       </div>
       <Dialog
         fullWidth={true}

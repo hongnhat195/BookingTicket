@@ -18,11 +18,11 @@ const RouteHome = [
     path: "/BookingInformation/:id",
     component: BookingInformation,
   },
-  {
-    exact: false,
-    path: "/BookingSeat",
-    component: BookingSeat,
-  },
+  // {
+  //   exact: false,
+  //   path: "/BookingSeat",
+  //   component: BookingSeat,
+  // },
   {
     exact: false,
     path: "/DetailFilm/:id",

@@ -35,7 +35,7 @@ export default function ManageFilm(props) {
   });
   const [open, setOpen] = React.useState(false);
   const [open1, setOpen1] = React.useState(false);
-
+  const [query, setQuery] = React.useState("");
   const handleClickOpen = (item) => {
     setOpen(true);
     setUpdateFilm({
@@ -82,6 +82,21 @@ export default function ManageFilm(props) {
   useEffect(() => {
     console.log(movieList);
   }, [movieList]);
+  useEffect(() => {
+    const fetFindFilm = async () => {
+      const res = await axios
+        .get(
+          `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP02&tenPhim=${query}`
+        )
+        .then((res) => {
+          setMovieList({
+            hits: res.data,
+          });
+        });
+    };
+    if (query != "") fetFindFilm();
+    else fetchMovieList();
+  }, [query]);
   const fetchMovieList = async () => {
     const result = await axios
       .get(
@@ -189,6 +204,17 @@ export default function ManageFilm(props) {
   return (
     <div>
       <h1 className="mb-5 mt-5">Danh sách Film</h1>
+      <div className="input-group">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Search username"
+          aria-label="Recipient's username with two button addons"
+          aria-describedby="button-addon4"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+      </div>
       <button onClick={handleClickOpen1} className="btn btn-success mb-5">
         Thêm Phim Mới
       </button>

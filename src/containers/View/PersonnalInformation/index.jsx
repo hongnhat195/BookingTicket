@@ -74,7 +74,38 @@ function Personal() {
     Swal.fire("Cập Nhật thành công", "You clicked the button!", "success");
     console.log("result", result);
   };
-
+  const showTicketBooked = () => {
+    return bookingTicket.map((item) => {
+      return (
+        <div
+          className="m-5"
+          style={{
+            backgroundColor: "LightSalmon",
+          }}
+        >
+          <div className="row " style={{ margin: "auto" }}>
+            <div className="col-6 ">
+              <img src={item.hinhAnh} />
+              <p> Tên Phim: {item.tenPhim} </p>
+              <p> Ngày đặt: {new Date(item.ngayDat).toLocaleString()} </p>
+            </div>
+            <div className="col-6 "> {showListSeat(item.danhSachGhe)}</div>
+          </div>
+        </div>
+      );
+    });
+  };
+  const showListSeat = (item) => {
+    return item.map((item1) => {
+      return (
+        <div className="mt-5 mb-5">
+          <p> Tên rạp : {item1.tenHeThongRap}</p>
+          <p> Cụm rạp : {item1.tenCumRap} </p>
+          <p> Số ghế: {item1.tenGhe} </p>
+        </div>
+      );
+    });
+  };
   useEffect(() => {
     async function fetchUserInfo() {
       const result = await axios.post(
@@ -97,7 +128,9 @@ function Personal() {
     fetchUserInfo();
     console.log("user", user);
   }, [open]);
-
+  useEffect(() => {
+    showTicketBooked();
+  }, []);
   return (
     <div className="container info">
       <h1>MY ACCOUNT INFOMATION</h1>
@@ -295,7 +328,10 @@ function Personal() {
         </Dialog>
       </div>
 
-      <div></div>
+      <div className="m-3">
+        <h3> Danh sách vé đã đặt</h3>
+        {showTicketBooked()}
+      </div>
     </div>
   );
 }
