@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Container, Grid } from "@material-ui/core";
 import "./style.css";
 import MovieItem from "../MovieItem";
 import { connect } from "react-redux";

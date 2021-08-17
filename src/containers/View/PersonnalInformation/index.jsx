@@ -1,4 +1,4 @@
-import React, { useState, useDispatch, useEffect } from "react";
+import React, { useState,  useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -85,7 +85,7 @@ function Personal() {
         >
           <div className="row " style={{ margin: "auto" }}>
             <div className="col-6 ">
-              <img src={item.hinhAnh} />
+              <img src={item.hinhAnh} alt={item.hinhAnh} />
               <p> Tên Phim: {item.tenPhim} </p>
               <p> Ngày đặt: {new Date(item.ngayDat).toLocaleString()} </p>
             </div>

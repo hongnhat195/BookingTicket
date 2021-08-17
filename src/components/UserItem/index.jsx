@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -46,7 +46,7 @@ export default function UserItem(props) {
     putUserInfo(state1);
   };
   const putUserInfo = async (user) => {
-    const result = await axios
+    await axios
       .put(
         "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
         user,
@@ -65,11 +65,10 @@ export default function UserItem(props) {
         alert(err.response.data);
       });
 
-    // setState(user);
-    // handleClose();
+  
   };
   const DeleteUser = async (i) => {
-    const res = await axios
+ await axios
       .delete(
         `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${i}`,
         {

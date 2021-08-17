@@ -15,7 +15,6 @@ export default function BookingFilm(props) {
   const [listSeat, setListSeat] = useState({ hits: [], thongTinPhim: {} });
   const [seatItem, setSeatItem] = useState({ hits: {} });
 
-  console.log(lichChieu.hits, "hhuhu");
   const handleClickOpen = (scrollType, item) => () => {
     fetMaRap(item);
     setOpen(true);
@@ -30,7 +29,7 @@ export default function BookingFilm(props) {
   const descriptionElementRef = React.useRef(null);
 
   const fetLichChieu = async (item) => {
-    const res = await axios
+     await axios
       .get(
         `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=${props.value}`
       )
@@ -44,7 +43,7 @@ export default function BookingFilm(props) {
       .catch((err) => console.log(err));
   };
   const fetListTheater = async () => {
-    const result = await axios
+     await axios
       .get(
         "https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinHeThongRap"
       )
@@ -55,7 +54,7 @@ export default function BookingFilm(props) {
       });
   };
   const fetTheaterDetail = async (item) => {
-    const result = await axios(
+     await axios(
       `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${item}&maNhom=GP02`
     ).then((res) => {
       setLichChieu({
@@ -67,7 +66,7 @@ export default function BookingFilm(props) {
     });
   };
   const fetMaRap = async (item) => {
-    const res = await axios
+    await axios
       .get(
         `https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${item}`
       )
@@ -166,7 +165,7 @@ export default function BookingFilm(props) {
       taiKhoanNguoiDung: JSON.parse(localStorage.getItem("User")).taiKhoan,
     };
 
-    const res = axios
+      axios
       .post("https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/DatVe", a, {
         headers: {
           Authorization: `Bearer ${
@@ -181,15 +180,15 @@ export default function BookingFilm(props) {
       })
       .catch((err) => alert(err.response.data));
   };
-  const handleBooking = () => {};
+
   useEffect(() => {
     fetLichChieu();
     fetListTheater();
-  }, []);
+  }, [] );
   React.useEffect(() => {
     if (open) {
       const { current: descriptionElement } = descriptionElementRef;
-      if (descriptionElement !== null) {
+      if (descriptionElement != null) {
         descriptionElement.focus();
       }
     }
@@ -223,7 +222,7 @@ export default function BookingFilm(props) {
         aria-describedby="scroll-dialog-description"
       >
         <DialogTitle id="scroll-dialog-title">Danh sách ghế</DialogTitle>
-        <DialogContent dividers={scroll === "paper"}>
+        <DialogContent divider  s={scroll == "paper"}>
           <DialogContentText
             className="ml-5"
             id="scroll-dialog-description"

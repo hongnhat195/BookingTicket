@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import axios from "axios";
 import "./style.css";
 import TheaterList from "./TheaterList";
 import TheaterDetail from "./TheaterDetail";

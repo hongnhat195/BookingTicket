@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
 export default function MovieSchedule(props) {
   const [state, setState] = useState({
     danhSachGhe: [],
     thongTinPhim: [],
   });
-  console.log("pr", props);
 
   const handleClickOpen = () => {
     if (!localStorage.getItem("User")) {
@@ -22,7 +20,7 @@ export default function MovieSchedule(props) {
     const res = await axios.get(
       `https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${props.data.maLichChieu}`
     );
-    const result = res.data;
+    
     setState({
       danhSachGhe: res.data.danhSachGhe,
       thongTinPhim: res.data.thongTinPhim,

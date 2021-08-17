@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import axios from "axios";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -84,7 +83,7 @@ export default function ManageFilm(props) {
   }, [movieList]);
   useEffect(() => {
     const fetFindFilm = async () => {
-      const res = await axios
+      await axios
         .get(
           `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP02&tenPhim=${query}`
         )
@@ -98,7 +97,7 @@ export default function ManageFilm(props) {
     else fetchMovieList();
   }, [query]);
   const fetchMovieList = async () => {
-    const result = await axios
+    await axios
       .get(
         "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP02  "
       )
@@ -109,8 +108,8 @@ export default function ManageFilm(props) {
       });
   };
   const handleDelete = async (item) => {
-    console.log(item);
-    const res = await axios
+   
+     await axios
       .delete(
         `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/XoaPhim?MaPhim=${item}`,
         {
@@ -128,8 +127,8 @@ export default function ManageFilm(props) {
       });
   };
 
-  const handleUpdate = async (item) => {
-    const res = await axios
+  const handleUpdate = async () => {
+    await axios
       .post(
         "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/CapNhatPhim",
         updateFilm,
@@ -147,7 +146,7 @@ export default function ManageFilm(props) {
       .catch((err) => alert(err.response.data));
   };
   const handleAddFilm = async () => {
-    const result = await axios
+    await axios
       .post(
         "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/ThemPhim",
         addFilmm,
@@ -165,19 +164,17 @@ export default function ManageFilm(props) {
         alert(err.response.data);
       });
   };
-  const handleUploadImage = async () => {};
   const showFilm = () => {
     if (movieList.hits) {
       return movieList.hits.map((item) => {
         return (
           <tr>
             <th scope="col">
-              <img
-                style={{
+              <img  src={item.hinhAnh} alt={item.hinhAnh} style={{
                   maxWidth: 70,
                   maxHeight: 200,
                 }}
-                src={item.hinhAnh}
+               
               />
             </th>
             <th scope="col">{item.maPhim}</th>

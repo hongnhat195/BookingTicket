@@ -54,7 +54,7 @@ export default function ManageUser() {
     setOpen1(false);
   };
   const fetUserList = async () => {
-    const res = await axios
+    await axios
       .get(
         "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP02"
       )
@@ -76,7 +76,7 @@ export default function ManageUser() {
     setAddUser({ ...addUser, [name]: value });
   };
   const handleUpdate = async () => {
-    const res = await axios
+    await axios
       .put(
         "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
         updateUser,
@@ -97,7 +97,7 @@ export default function ManageUser() {
   };
   const handleDelete = async (item) => {
     console.log(item);
-    const response = await axios
+    await axios
       .delete(
         `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${item}`,
 
@@ -114,7 +114,7 @@ export default function ManageUser() {
       .catch((err) => alert(err.response.data));
   };
   const handleAddUser = async () => {
-    const res = await axios
+    await axios
       .post(
         "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThemNguoiDung",
         addUser,
@@ -173,7 +173,7 @@ export default function ManageUser() {
   };
   useEffect(() => {
     const fetFindUser = async () => {
-      const result = await axios
+      await axios
         .get(
           `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP02&tuKhoa=${query}`
         )

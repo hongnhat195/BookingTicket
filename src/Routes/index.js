@@ -1,6 +1,5 @@
 import BookingInformation from "../containers/View/BookingInformation";
 import DetailFilm from "../containers/View/DetailFIlm";
-import BookingSeat from "../containers/View/Booking_Seat";
 import Home from "../containers/View/Home";
 import Personal from "../containers/View/PersonnalInformation";
 import ShowTimes from "../containers/View/Showtimes";
