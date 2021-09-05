@@ -1,4 +1,4 @@
-import BookingInformation from "../containers/View/BookingInformation";
+
 import DetailFilm from "../containers/View/DetailFIlm";
 import Home from "../containers/View/Home";
 import Personal from "../containers/View/PersonnalInformation";
@@ -12,16 +12,7 @@ const RouteHome = [
     path: "/",
     component: Home,
   },
-  {
-    exact: false,
-    path: "/BookingInformation/:id",
-    component: BookingInformation,
-  },
-  // {
-  //   exact: false,
-  //   path: "/BookingSeat",
-  //   component: BookingSeat,
-  // },
+
   {
     exact: false,
     path: "/DetailFilm/:id",

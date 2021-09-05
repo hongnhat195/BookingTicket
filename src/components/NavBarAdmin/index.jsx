@@ -26,7 +26,7 @@ export default function NavBarAdmin() {
         <div className="collapse1 ">
           <ul className="nav navbar-nav navbar-right flex flex-row">
             <li className="mr-5">
-              <a href="#">
+              <a href="##">
                 <span className="mr-2">
                   <i class="material-icons">admin_panel_settings</i>
                 </span>

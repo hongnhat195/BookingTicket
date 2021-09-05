@@ -14,7 +14,7 @@ export default function BookingFilm(props) {
   const [lichChieu, setLichChieu] = useState({ hits: [], maCumRap: "" });
   const [listSeat, setListSeat] = useState({ hits: [], thongTinPhim: {} });
   const [seatItem, setSeatItem] = useState({ hits: {} });
-
+  const [loading, setLoading] = useState(false);
   const handleClickOpen = (scrollType, item) => () => {
     fetMaRap(item);
     setOpen(true);
@@ -27,23 +27,24 @@ export default function BookingFilm(props) {
     });
   };
   const descriptionElementRef = React.useRef(null);
-
+  console.log(loading)
   const fetLichChieu = async (item) => {
-     await axios
+    await setLoading(true);
+    await axios
       .get(
         `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=${props.value}`
       )
-      .then((res) => {
-        console.log("lichChieu", res.data.lichChieu);
+      .then(async (res) => {
         setLichChieu({
           hits: res.data.lichChieu,
           maCumRap: item,
         });
+      await setLoading(false)
       })
       .catch((err) => console.log(err));
   };
   const fetListTheater = async () => {
-     await axios
+    await axios
       .get(
         "https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinHeThongRap"
       )
@@ -54,7 +55,7 @@ export default function BookingFilm(props) {
       });
   };
   const fetTheaterDetail = async (item) => {
-     await axios(
+    await axios(
       `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${item}&maNhom=GP02`
     ).then((res) => {
       setLichChieu({
@@ -124,9 +125,8 @@ export default function BookingFilm(props) {
         </button>
       );
     });
-    console.log("b", b);
-    if (b.length == 0) return <p className="m-5"> Không có lịch chiếu</p>;
-    else return b;
+    if (b.length == 0 ) return <p className="m-5"> Không có lịch chiếu</p>;
+     return b;
   };
   const showListSeat = () => {
     if (listSeat.hits) {
@@ -165,7 +165,7 @@ export default function BookingFilm(props) {
       taiKhoanNguoiDung: JSON.parse(localStorage.getItem("User")).taiKhoan,
     };
 
-      axios
+    axios
       .post("https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/DatVe", a, {
         headers: {
           Authorization: `Bearer ${
@@ -182,10 +182,9 @@ export default function BookingFilm(props) {
   };
 
   useEffect(() => {
-    fetLichChieu();
     fetListTheater();
-  }, [] );
-  React.useEffect(() => {
+  }, []);
+  useEffect(() => {
     if (open) {
       const { current: descriptionElement } = descriptionElementRef;
       if (descriptionElement != null) {
@@ -193,10 +192,9 @@ export default function BookingFilm(props) {
       }
     }
   }, [open]);
-
-  useEffect(() => {}, [theaterDetail]);
-  useEffect(() => {}, [lichChieu]);
-  useEffect(() => {}, [listSeat]);
+  // useEffect(() => {}, [theaterDetail]);
+  // useEffect(() => {}, [lichChieu]);
+  // useEffect(() => {}, [listSeat]);
   return (
     <div className="container">
       <h3>Danh sách lịch chiếu</h3>
@@ -205,12 +203,16 @@ export default function BookingFilm(props) {
         {showListTheater()}
       </div>
       <div>
-        {theaterDetail.hits != [] ? <h6>Danh sách cụm rạp</h6> : null}
         {showTheaterDetail()}
       </div>
       <div className="m-2">
-        <h6>Mã cụm rạp</h6>
-        {showLichChieu()}
+        {loading == true && lichChieu.hits!=[]  ? (
+          <div className="spinner-border text-primary" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+        ) : (
+          showLichChieu()
+        )}
       </div>
       <Dialog
         fullWidth={true}
@@ -222,7 +224,7 @@ export default function BookingFilm(props) {
         aria-describedby="scroll-dialog-description"
       >
         <DialogTitle id="scroll-dialog-title">Danh sách ghế</DialogTitle>
-        <DialogContent divider  s={scroll == "paper"}>
+        <DialogContent divider s={scroll == "paper"}>
           <DialogContentText
             className="ml-5"
             id="scroll-dialog-description"

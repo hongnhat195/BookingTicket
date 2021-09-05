@@ -6,7 +6,7 @@ import {
 } from "../../../Redux/Actions/course";
 
 import "./style.css";
-import { fetchGetFilmShow } from "../BookingInformation/Api/actions";
+
 
 import BookingFilm from "../../../components/BookingFilm";
 
@@ -35,7 +35,7 @@ class DetailFilm extends Component {
                         <li>
                           <div className="transformers-left">Movie:</div>
                           <div className="transformers-right">
-                            <a href="#">{this.props.movieDetail.tenPhim}</a>
+                            <a href="##">{this.props.movieDetail.tenPhim}</a>
                           </div>
                         </li>
                         <li>
@@ -68,16 +68,16 @@ class DetailFilm extends Component {
                         <li>
                           <div className="transformers-left">Share:</div>
                           <div className="transformers-right">
-                            <a href="#">
+                            <a href="##">
                               <i className="fab fa-facebook"></i>
                             </a>
-                            <a href="#">
+                            <a href="##">
                               <i className="fab fa-twitter"></i>
                             </a>
-                            <a href="#">
+                            <a href="##">
                               <i className="fa fa-envelope"></i>
                             </a>
-                            <a href="#">
+                            <a href="##">
                               <i className="fab fa-youtube"></i>
                             </a>
                           </div>
@@ -144,7 +144,7 @@ class DetailFilm extends Component {
                       </form>
                     </div>
                     <div className="details-comment">
-                      <a className="theme-btn theme-btn2 btn col-3" href="#">
+                      <a className="theme-btn theme-btn2 btn col-3" href="##">
                         Post Comment
                       </a>
                       <p className="col-9 pl-5">
@@ -184,7 +184,7 @@ class DetailFilm extends Component {
     const { id } = this.props.match.params;
     console.log(this.props.match.params.id);
     this.props.dispatch(fetchMovieDetail(id));
-    this.props.dispatch(fetchGetFilmShow(id));
+   
     this.props.dispatch(fetGetTheaterCourse());
   }
 }

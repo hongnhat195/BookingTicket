@@ -20,13 +20,13 @@ export default class Footer extends Component {
                 <h4>Legal</h4>
                 <ul>
                   <li>
-                    <a href="#">Terms of Use</a>
+                    <a href="##">Terms of Use</a>
                   </li>
                   <li>
-                    <a href="#">Privacy Policy</a>
+                    <a href="##">Privacy Policy</a>
                   </li>
                   <li>
-                    <a href="#">Security</a>
+                    <a href="##">Security</a>
                   </li>
                 </ul>
               </div>
@@ -36,16 +36,16 @@ export default class Footer extends Component {
                 <h4>Account</h4>
                 <ul>
                   <li>
-                    <a href="#">My Account</a>
+                    <a href="##">My Account</a>
                   </li>
                   <li>
-                    <a href="#">Watchlist</a>
+                    <a href="##">Watchlist</a>
                   </li>
                   <li>
-                    <a href="#">Collections</a>
+                    <a href="##">Collections</a>
                   </li>
                   <li>
-                    <a href="#">User Guide</a>
+                    <a href="##">User Guide</a>
                   </li>
                 </ul>
               </div>
@@ -57,7 +57,7 @@ export default class Footer extends Component {
                   Subscribe to our newsletter system now to get latest news from
                   us.
                 </p>
-                <form action="#">
+                <form action="##">
                   <input type="text" placeholder="Enter your email.." />
                   <button>SUBSCRIBE NOW</button>
                 </form>
@@ -80,7 +80,7 @@ export default class Footer extends Component {
               </div>
               <div className="col-lg-6 text-center text-lg-right">
                 <div className="copyright-content">
-                  <a href="#" className="scrollToTop">
+                  <a href="##" className="scrollToTop">
                     Back to top<i className="icofont icofont-arrow-up"></i>
                   </a>
                 </div>
