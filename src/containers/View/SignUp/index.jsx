@@ -55,8 +55,8 @@ export default function SignUp(props) {
     matKhau: "",
     email: "",
     soDt: "",
-    maNhom: null,
-    maLoaiNguoiDung: "",
+    maNhom: "GP02",
+    maLoaiNguoiDung: "KhachHang",
     hoTen: "",
   };
   let dispatch = useDispatch();
@@ -135,32 +135,6 @@ export default function SignUp(props) {
                 label="Số Điện Thoại"
                 type="text"
                 id="soDt"
-                autoComplete=""
-                onChange={handleChange}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="maNhom"
-                label="Mã Nhóm"
-                type="text"
-                id="maNhom"
-                autoComplete=""
-                onChange={handleChange}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="maLoaiNguoiDung"
-                label="Mã Loại Người Dùng"
-                type="text"
-                id="maNguoiDung"
                 autoComplete=""
                 onChange={handleChange}
               />

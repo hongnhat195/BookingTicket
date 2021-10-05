@@ -12,19 +12,15 @@ export const FetchSignUp = (user, history) => {
     })
       .then((res) => {
         dispatch(actAuthSuccess(res.data));
-        console.log(res.data);
-        console.log(2);
-        // SignUp = true;
-        // history.push("./");
-        // if (SignUp) {
+        localStorage.setItem("User", JSON.stringify(res.data));
+
         return Swal.fire({
           //position: 'mid',
           icon: "success",
           title: "Đăng Kí thành công",
           showConfirmButton: false,
           timer: 2000,
-        });
-        // }
+        }).then(() => history.push("./"));
       })
       .catch((err) => {
         dispatch(actAutFail(err));

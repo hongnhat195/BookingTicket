@@ -72,7 +72,7 @@ export default class Footer extends Component {
               <div className="col-lg-6 text-center text-lg-left">
                 <div className="copyright-content">
                   <p>
-                    <a target="_blank" href="https://www.templateshub.net">
+                    <a target="__blank" href="https://www.templateshub.net">
                       Templates Hub
                     </a>
                   </p>

@@ -17,15 +17,6 @@ import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { actLoginUserApi } from "./Api/actions";
 
-// {
-//   "taiKhoan": "nhat195",
-//   "matKhau": "string",
-//   "email": "nhat195@",
-//   "soDt": "string",
-//   "maNhom": "GP02",
-//   "maLoaiNguoiDung": "KhachHang",
-//   "hoTen": "string"
-// }
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
